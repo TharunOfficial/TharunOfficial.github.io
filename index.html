@@ -2,87 +2,179 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tharun M | Cybersecurity Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
       background: #0a0a0a;
       color: #00ffcc;
       font-family: 'Fira Code', monospace;
     }
 
-    .main {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: rgba(17, 17, 17, 0.5);
+      width: 220px;
+      padding: 20px;
+      box-sizing: border-box;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 2;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      color: #00ffcc;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #00ffcc;
+      text-decoration: none;
+      margin-bottom: 10px;
+      font-size: 1em;
+      border-bottom: 1px dashed #00ffcc;
+    }
+
+    .sidebar a i {
+      width: 18px;
       text-align: center;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 2rem;
+      flex: 1;
+      box-sizing: border-box;
+      position: relative;
       z-index: 1;
     }
 
     h1 {
       font-size: 2.8em;
       margin-bottom: 0.2em;
+      text-align: center;
     }
 
     p {
-      font-size: 1.2em;
-      color: #999;
+      font-size: 1.1em;
+      color: #aaa;
+      text-align: center;
     }
 
-    .links a {
+    .writeups {
+      max-width: 900px;
+      margin: 3rem auto 0;
+      background-color: rgba(255, 255, 255, 0.03);
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+
+    .writeup {
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .writeup h3 {
       color: #00ffcc;
-      text-decoration: none;
-      margin: 10px;
-      font-size: 1em;
-      border-bottom: 1px dashed #00ffcc;
+      margin-bottom: 0.5rem;
+    }
+
+    .writeup p {
+      color: #ccc;
+      font-size: 0.95em;
+    }
+
+    .template {
+      display: none;
     }
 
     canvas {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      .writeups {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-
   <canvas id="bg"></canvas>
 
-  <div class="main">
-    <h1>&lt; Tharun M /&gt;</h1>
-    <p>Cybersecurity Student | CTF Player | Networking | Ethical Hacking</p>
-    <div class="links">
-      <a href="https://github.com/TharunOfficial" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/tharun-m-946460288" target="_blank">LinkedIn</a>
-      <a href="https://ctftime.org/user/188136" target="_blank">CTFtime</a>
-      <a href="https://app.hackthebox.com/users/1829472" target="_blank">HackTheBox</a>
-      <a href="https://tryhackme.com/p/panicboy21" target="_blank">TryHackMe</a>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Navigation</h2>
+      <a href="https://github.com/TharunOfficial" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/tharun-m21" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://ctftime.org/user/188136" target="_blank"><i class="fas fa-flag"></i> CTFtime</a>
+      <a href="https://app.hackthebox.com/users/1829472" target="_blank"><i class="fas fa-terminal"></i> HackTheBox</a>
+      <a href="https://tryhackme.com/p/panicboy21" target="_blank"><i class="fas fa-network-wired"></i> TryHackMe</a>
+      <a href="writeups.html"><i class="fas fa-pen"></i> Writeups</a>
+      <a href="achievements.html"><i class="fas fa-trophy"></i> Achievements</a>
     </div>
-    <div class="education">
-      <h2>Education</h2>
-      <p>Sathyabama Institute of Science & Technology, Chennai</p>
-      <p>Bachelor's Degree in Cybersecurity</p>
+
+    <div class="main">
+      <h1>&lt; Tharun M /&gt;</h1>
+      <p>Cybersecurity Student | CTF Player | Networking Enthusiast | Ethical Hacker</p>
+      <p>
+        As a dedicated cybersecurity student at Sathyabama Institute of Science & Technology in Chennai, I have cultivated a strong foundation in networking and ethical hacking. My passion lies in solving real-world security challenges, which I actively pursue through Capture The Flag (CTF) competitions and continuous learning on platforms like Hack The Box, TryHackMe, and CTFtime.
+      </p>
+      <p>
+        I have earned industry-recognized certifications including:
+        <ul>
+          <li><strong>Google Cybersecurity Professional Certificate</strong></li>
+          <li><strong>IBM Malware Analysis Certification</strong></li>
+        </ul>
+      </p>
+      <p>
+        I am currently open to internship opportunities where I can apply my skills, learn from experienced professionals, and contribute to solving critical cybersecurity problems.
+      </p>
     </div>
-    <div class="skills">
-      <h2>Skills</h2>
-      <p>Networking, Ethical Hacking, CTF Challenges, Linux, Python</p>
-    </div>
-  </div>
+    
 
   <script>
-    // Simple particle background (mouse interactive)
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
-
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
     const particles = [];
     const particleCount = 100;
 
@@ -99,8 +191,8 @@
     function draw() {
       ctx.fillStyle = 'rgba(10, 10, 10, 0.3)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
       ctx.fillStyle = '#00ffcc';
+
       for (let p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
