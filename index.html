@@ -134,6 +134,21 @@
         padding: 1rem;
       }
     }
+    .block-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1em;
+  margin-left: 2px;
+  background-color: #00ffc8;
+  animation: blink 1s steps(1, start) infinite;
+  vertical-align: text-bottom;
+  line-height: 1;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
   </style>
 </head>
 <body>
@@ -151,26 +166,40 @@
       <a href="achievements.html"><i class="fas fa-trophy"></i> Achievements</a>
     </div>
 
-    <div class="main">
+    <div class="main" style="font-family: 'Courier New', monospace; background-color: #000; color: #00ffc8; padding: 20px; border-radius: 10px;">
       <h1>&lt; Tharun M /&gt;</h1>
-      <p>Cybersecurity Student | CTF Player | Networking Enthusiast | Ethical Hacker</p>
-      <p>
-        As a dedicated cybersecurity student at Sathyabama Institute of Science & Technology in Chennai, I have cultivated a strong foundation in networking and ethical hacking. My passion lies in solving real-world security challenges, which I actively pursue through Capture The Flag (CTF) competitions and continuous learning on platforms like Hack The Box, TryHackMe, and CTFtime.
-      </p>
-      <p>
-        I have earned industry-recognized certifications including:
-        <ul>
-          <li><strong>Google Cybersecurity Professional Certificate</strong></li>
-          <li><strong>IBM Malware Analysis Certification</strong></li>
-        </ul>
-      </p>
-      <p>
-        I am currently open to internship opportunities where I can apply my skills, learn from experienced professionals, and contribute to solving critical cybersecurity problems.
-      </p>
+      <p id="typedText" style="white-space: pre-line; display: inline;"></p><span id="cursor" class="block-cursor">█</span>
+      <p id="ctfName" style="font-weight: bold; color: #00ffc8; margin-top: 20px;">CTF Alias: panicboy</p>
     </div>
-    
 
   <script>
+
+const text = `Cybersecurity Student | CTF Player | Networking Enthusiast | Ethical Hacker
+
+As a dedicated cybersecurity student at Sathyabama Institute of Science & Technology in Chennai, I have cultivated a strong foundation in networking and ethical hacking.
+
+My passion lies in solving real-world security challenges, which I actively pursue through Capture The Flag (CTF) competitions and continuous learning on platforms like Hack The Box, TryHackMe, and CTFtime.
+
+I'm also certified in:
+• Google Cybersecurity Professional Certificate
+• IBM Malware Analysis
+
+I am currently seeking internship opportunities to enhance my skills and contribute to the cybersecurity community.`;
+
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      const char = text.charAt(i);
+      document.getElementById("typedText").innerHTML += char === "\n" ? "<br>" : char;
+      i++;
+      setTimeout(typeWriter, 20);
+    } else {
+      document.getElementById("cursor").style.display = "none";
+    }
+  }
+
+  window.onload = typeWriter;
+
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
