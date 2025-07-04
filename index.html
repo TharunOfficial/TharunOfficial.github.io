@@ -3,245 +3,897 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tharun M | Cybersecurity Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <meta name="description" content="Tharun M - Cybersecurity Student, CTF Player & Ethical Hacker Portfolio">
+  <title>Tharun M | Cybersecurity Professional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    html, body {
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #00d4ff;
+      --accent-color: #ff6b35;
+      --text-primary: #ffffff;
+      --text-secondary: #b8bcc8;
+      --text-muted: #6c757d;
+      --bg-primary: #0a0e27;
+      --bg-secondary: #1a1f3a;
+      --bg-tertiary: #252a48;
+      --border-color: #2d3348;
+      --success-color: #00ff88;
+      --warning-color: #ffab00;
+      --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      --gradient-secondary: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
-      background: #0a0a0a;
-      color: #00ffcc;
-      font-family: 'Fira Code', monospace;
-    }
-
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
-
-    .sidebar {
-      background: rgba(17, 17, 17, 0.5);
-      width: 220px;
-      padding: 20px;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
       position: fixed;
-      height: 100vh;
-      overflow-y: auto;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 31, 58, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-top: 80px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
       z-index: 2;
     }
 
-    .sidebar h2 {
-      font-size: 1.5em;
-      margin-bottom: 1em;
-      color: #00ffcc;
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .sidebar a {
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .typewriter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      color: var(--success-color);
+      margin: 2rem 0;
+      min-height: 4rem;
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: #00ffcc;
+      justify-content: center;
+      font-weight: 500;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
       text-decoration: none;
-      margin-bottom: 10px;
-      font-size: 1em;
-      border-bottom: 1px dashed #00ffcc;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .sidebar a i {
-      width: 18px;
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+    }
+
+    /* Sections */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
       text-align: center;
+      margin-bottom: 3rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .main {
-      margin-left: 240px;
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--gradient-secondary);
       padding: 2rem;
-      flex: 1;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 1;
-    }
-
-    h1 {
-      font-size: 2.8em;
-      margin-bottom: 0.2em;
+      border-radius: 12px;
       text-align: center;
+      border: 1px solid var(--border-color);
     }
 
-    p {
-      font-size: 1.1em;
-      color: #aaa;
-      text-align: center;
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: block;
     }
 
-    .writeups {
-      max-width: 900px;
-      margin: 3rem auto 0;
-      background-color: rgba(255, 255, 255, 0.03);
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--gradient-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .skill-category h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: rgba(0, 102, 255, 0.1);
+      color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(0, 102, 255, 0.3);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: var(--gradient-secondary);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-header {
       padding: 1.5rem;
-      border-radius: 10px;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .writeup {
-      margin-bottom: 2rem;
-      text-align: left;
-    }
-
-    .writeup h3 {
-      color: #00ffcc;
+    .project-title {
+      color: var(--primary-color);
+      font-size: 1.25rem;
       margin-bottom: 0.5rem;
     }
 
-    .writeup p {
-      color: #ccc;
-      font-size: 0.95em;
+    .project-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
     }
 
-    .template {
-      display: none;
+    .project-features {
+      margin-top: 1rem;
     }
 
-    canvas {
+    .project-features ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .project-features li {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .project-features li::before {
+      content: "▸";
+      color: var(--primary-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .project-footer {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-tech {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--secondary-color);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-links a {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .project-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info {
+      background: var(--gradient-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .contact-icon .fab.fa-ibm {
+      font-size: 1.2rem;
+      color: #1261FE;
+      background: white;
+      padding: 8px;
+      border-radius: 4px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--gradient-primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Background Animation */
+    .bg-animation {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;
+      z-index: -1;
+      opacity: 0.1;
     }
 
-    @media screen and (max-width: 768px) {
-      .container {
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons {
         flex-direction: column;
+        align-items: center;
       }
 
-      .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-      }
-
-      .main {
-        margin-left: 0;
-      }
-
-      h1 {
-        font-size: 2em;
-      }
-
-      .writeups {
-        padding: 1rem;
+      .section {
+        padding: 3rem 1rem;
       }
     }
-    .block-cursor {
-  display: inline-block;
-  width: 10px;
-  height: 1em;
-  margin-left: 2px;
-  background-color: #00ffc8;
-  animation: blink 1s steps(1, start) infinite;
-  vertical-align: text-bottom;
-  line-height: 1;
-}
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-color);
+    }
   </style>
 </head>
 <body>
-  <canvas id="bg"></canvas>
+  <canvas class="bg-animation" id="bgCanvas"></canvas>
 
-  <div class="container">
-    <div class="sidebar">
-      <h2>Navigation</h2>
-      <a href="https://github.com/TharunOfficial" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.linkedin.com/in/tharun-m21" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://ctftime.org/user/188136" target="_blank"><i class="fas fa-flag"></i> CTFtime</a>
-      <a href="https://app.hackthebox.com/users/1829472" target="_blank"><i class="fas fa-terminal"></i> HackTheBox</a>
-      <a href="https://tryhackme.com/p/panicboy21" target="_blank"><i class="fas fa-network-wired"></i> TryHackMe</a>
-      <a href="writeups.html"><i class="fas fa-pen"></i> Writeups</a>
-      <a href="achievements.html"><i class="fas fa-trophy"></i> Achievements</a>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">&lt;/panicboy&gt;</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
+  </nav>
 
-<div class="main" style="font-family: 'Courier New', monospace; color: #00ffc8; padding: 20px;">
-  <h1>&lt; Tharun M /&gt;</h1>
-      <p id="typedText" style="white-space: pre-line; display: inline;"></p><span id="cursor" class="block-cursor">█</span>
-      <p id="ctfName" style="font-weight: bold; color: #00ffc8; margin-top: 20px;">CTF Alias: panicboy</p>
-    </div>
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Tharun M</h1>
+        <div class="typewriter" id="typewriter"></div>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-primary">
+            <i class="fas fa-envelope"></i>
+            Get In Touch
+          </a>
+          <a href="#projects" class="btn btn-secondary">
+            <i class="fas fa-code"></i>
+            View Projects
+          </a>
+          <a href="Tharun M Resume.pdf" download class="btn btn-secondary">
+            <i class="fas fa-download"></i>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a dedicated cybersecurity student at Sathyabama Institute of Science & Technology in Chennai, passionate about protecting digital assets and solving complex security challenges.</p>
+          <p>My expertise spans across network security, ethical hacking, malware analysis, and penetration testing. I actively participate in CTF competitions and contribute to the cybersecurity community through research and writeups.</p>
+          <p><strong>CTF Alias:</strong> <span style="color: var(--success-color);">panicboy</span></p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">CTF Challenges Solved</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">1+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Security Tools</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3><i class="fas fa-shield-alt"></i> Cybersecurity</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Penetration Testing</span>
+            <span class="skill-tag">Vulnerability Assessment</span>
+            <span class="skill-tag">Malware Analysis</span>
+            <span class="skill-tag">Digital Forensics</span>
+            <span class="skill-tag">OSINT</span>
+            <span class="skill-tag">Social Engineering</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-terminal"></i> Tools & Platforms</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Kali Linux</span>
+            <span class="skill-tag">Metasploit</span>
+            <span class="skill-tag">Burp Suite</span>
+            <span class="skill-tag">Wireshark</span>
+            <span class="skill-tag">Nmap</span>
+            <span class="skill-tag">OWASP ZAP</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-code"></i> Programming</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">PowerShell</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">C++</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-network-wired"></i> Networking</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">TCP/IP</span>
+            <span class="skill-tag">Network Security</span>
+            <span class="skill-tag">Firewall Configuration</span>
+            <span class="skill-tag">VPN</span>
+            <span class="skill-tag">IDS/IPS</span>
+            <span class="skill-tag">Network Analysis</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">IoT-Based Smart Farming System Using GSM & SMS</h3>
+            <p class="project-description">An intelligent agricultural monitoring system that leverages IoT sensors and GSM communication for real-time farm management and automation.</p>
+            <div class="project-features">
+              <ul>
+                <li>Developed an IoT system to monitor and control farming conditions remotely</li>
+                <li>Used GSM module to send real-time updates and alerts via SMS to farmers</li>
+                <li>Enabled automation of irrigation and climate control for better crop management</li>
+                <li>Integrated soil moisture, temperature, and humidity sensors</li>
+                <li>Cost-effective solution for precision agriculture</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span class="tech-tag">Arduino</span>
+              <span class="tech-tag">GSM Module</span>
+              <span class="tech-tag">IoT Sensors</span>
+              <span class="tech-tag">SMS API</span>
+              <span class="tech-tag">C/C++</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/TharunOfficial" target="_blank" title="View on GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">Sensitive Information Detection in Documents</h3>
+            <p class="project-description">Advanced cybersecurity tool for identifying and protecting sensitive data in digital documents using machine learning and pattern recognition techniques.</p>
+            <div class="project-features">
+              <ul>
+                <li>Created a tool to detect sensitive data (emails, phone numbers, ID numbers) in text files</li>
+                <li>Implemented using Python with regex and natural language processing for pattern matching</li>
+                <li>Useful for data privacy and compliance with security standards</li>
+                <li>Supports multiple document formats (PDF, DOCX, TXT)</li>
+                <li>Generates detailed compliance reports and risk assessments</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">Regex</span>
+              <span class="tech-tag">Data Privacy</span>
+              <span class="tech-tag">Security</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/TharunOfficial" target="_blank" title="View on GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" target="_blank" title="Documentation"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3 style="color: var(--primary-color); margin-bottom: 2rem;">Let's Connect</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <strong>Email</strong><br>
+              <span>m.tharunofficial@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <strong>Location</strong><br>
+              <span>Tirunelveli, Tamil Nadu, India</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div>
+              <strong>Institution</strong><br>
+              <span>Sathyabama Institute of Science & Technology</span>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://github.com/TharunOfficial" target="_blank" class="social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/tharun-m-946460288" target="_blank" class="social-link">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://ctftime.org/user/188136" target="_blank" class="social-link">
+              <i class="fas fa-flag"></i>
+            </a>
+            <a href="https://app.hackthebox.com/users/1829472" target="_blank" class="social-link">
+              <i class="fas fa-terminal"></i>
+            </a>
+            <a href="https://tryhackme.com/p/panicboy21" target="_blank" class="social-link">
+              <i class="fas fa-network-wired"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-info">
+          <h3 style="color: var(--primary-color); margin-bottom: 2rem;">Certifications</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-google"></i>
+            </div>
+            <div>
+              <strong>Google Cybersecurity Professional Certificate</strong><br>
+              <span style="color: var(--success-color);">Certified</span>
+            </div>
+          </div>
+<div class="contact-item">
+  <div class="contact-icon" style="font-weight: bold; font-size: 18px; color: white; font-family: sans-serif;">
+    IBM
+  </div>
+  <div>
+    <strong>IBM Malware Analysis</strong><br>
+    <span style="color: var(--success-color);">Certified</span>
+  </div>
+</div>
+
+
+          
+
+  
+        </div> 
+      </div>
+    </section>
+  </main>
 
   <script>
-
-const text = `Cybersecurity Student | CTF Player | Networking Enthusiast | Ethical Hacker
-
-As a dedicated cybersecurity student at Sathyabama Institute of Science & Technology in Chennai, I have cultivated a strong foundation in networking and ethical hacking.
-
-My passion lies in solving real-world security challenges, which I actively pursue through Capture The Flag (CTF) competitions and continuous learning on platforms like Hack The Box, TryHackMe, and CTFtime.
-
-I'm also certified in:
-• Google Cybersecurity Professional Certificate
-• IBM Malware Analysis
-
-I am currently seeking internship opportunities to enhance my skills and contribute to the cybersecurity community.`;
-
-  let i = 0;
-  function typeWriter() {
-    if (i < text.length) {
-      const char = text.charAt(i);
-      document.getElementById("typedText").innerHTML += char === "\n" ? "<br>" : char;
-      i++;
-      setTimeout(typeWriter, 20);
-    } else {
-      document.getElementById("cursor").style.display = "none";
-    }
-  }
-
-  window.onload = typeWriter;
-
-    const canvas = document.getElementById('bg');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const particles = [];
-    const particleCount = 100;
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: (Math.random() - 0.5) * 1.5,
-        radius: Math.random() * 1.8 + 0.5,
-      });
-    }
-
-    function draw() {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.3)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#00ffcc';
-
-      for (let p of particles) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    // Typewriter Effect
+    const typewriterText = [
+      "Cybersecurity Student & Ethical Hacker",
+      "CTF Player & Problem Solver",
+      "Penetration Testing Enthusiast", 
+      "Network Security Researcher",
+      "Malware Analysis Specialist",
+      "Digital Forensics Investigator",
+      "IoT Security Developer",
+      "Privacy & Data Protection Advocate"
+    ];
+    
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterElement = document.getElementById('typewriter');
+    
+    function typeWriter() {
+      const currentText = typewriterText[textIndex];
+      
+      if (isDeleting) {
+        typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
       }
-
-      requestAnimationFrame(draw);
+      
+      let typeSpeed = isDeleting ? 50 : 100;
+      
+      if (!isDeleting && charIndex === currentText.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % typewriterText.length;
+        typeSpeed = 500;
+      }
+      
+      setTimeout(typeWriter, typeSpeed);
     }
-
-    draw();
-
-    window.addEventListener('resize', () => {
+    
+    // Background Animation
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    const particles = [];
+    const particleCount = 50;
+    
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 2 + 1;
+        this.opacity = Math.random() * 0.5 + 0.2;
+      }
+      
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 102, 255, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+    
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+    
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      
+      // Draw connections
+      particles.forEach((particle, i) => {
+        particles.slice(i + 1).forEach(otherParticle => {
+          const dx = particle.x - otherParticle.x;
+          const dy = particle.y - otherParticle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(otherParticle.x, otherParticle.y);
+            ctx.strokeStyle = `rgba(0, 102, 255, ${0.1 * (1 - distance / 100)})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        });
+      });
+      
+      requestAnimationFrame(animate);
+    }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Start animations
+    window.addEventListener('load', () => {
+      typeWriter();
+      animate();
     });
   </script>
 </body>
